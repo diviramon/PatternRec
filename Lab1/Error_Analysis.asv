@@ -26,29 +26,18 @@ function Error_Analysis(cluster1, cluster2, cluster3, mean1, mean2, mean3, num_c
         
         true_class_0 = zeros(size1(1),1);
         true_class_1 = ones(size2(1),1);
-        true_class_2 = 2*ones(size3(1),1);
-        total_elements = size1(1) + size2(1) + size3(1);
-
-        true_classes = zeros(total_elements, 1);
-
-        % ignore my hideous code I just hardcoded this
-        range1 = 1:size1(1);
-        range2 = size1(1)+1:size1(1)+size2(1);
-        range3 = size1(1)+size2(1)+1:size1(1)+size2(1)+ size3(1);
-
-        true_classes(range1,:) = true_class_0;
-        true_classes(range2,:) = true_class_1;
-        true_classes(range3,:) = true_class_2;
+        true_class_2 = 2.*ones(size3(1),1);
+        
+        combine = [true_class_0 true_class_1 true_class_2];
+        true_classes = combine(:);
         
         means = cell(1,3);
         means{1} = mean1;
         means{2} = mean2;
-        means{3} = mean3;
         
-        clusters = cell(1,3);
+        clusters = cell(1,2);
         clusters{1} = cluster1;
         clusters{2} = cluster2;
-        clusters{3} = cluster3;
          
     end
     
@@ -63,7 +52,7 @@ function Error_Analysis(cluster1, cluster2, cluster3, mean1, mean2, mean3, num_c
         for j=1:cluster_size(1)
             
             current_point = current_cluster(j,:);
-            temp = zeros(num_clusters,1);
+            temp = zeros(2,1);
             
             for k=1:length(means)
                 current_mean = means{k};
@@ -91,10 +80,7 @@ function Error_Analysis(cluster1, cluster2, cluster3, mean1, mean2, mean3, num_c
     fprintf('Experimental Error Rate: %f percent',prediction_error)
 
     C = confusionmat(true_classes,predicted_classes);
-    
-    figure
     confusionchart(C)
-    
     
     
  

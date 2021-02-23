@@ -1,3 +1,5 @@
+close all
+
 % CASE 1:
 
 % Class A: 
@@ -71,4 +73,5 @@ plot_ellipse(mu_E(1), mu_E(2), theta_E, cont_Axes_E(2,2), cont_Axes_E(1,1))
 hold off
 
 MED_Classifier(cluster_C, cluster_D, cluster_E, mu_C, mu_D, mu_E, 3);
+Error_Analysis(cluster_C, cluster_D, cluster_E, mu_C, mu_D, mu_E, 3);
 
