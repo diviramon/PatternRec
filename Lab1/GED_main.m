@@ -34,7 +34,7 @@ Cluster_D = create_cluster(n_d, mu_d, sigma_d);
 Cluster_E = create_cluster(n_e, mu_e, sigma_e);
 
 % Computing the classifiers
-step = 0.2; 
+step = 0.05; 
 %Class 1 - computing the classifiers
 min_x = floor(min([min(Cluster_A(:,1)) min(Cluster_B(:,1))]));
 max_x = ceil(max([max(Cluster_A(:,1)) max(Cluster_B(:,1))]));
