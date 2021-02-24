@@ -1,4 +1,4 @@
-function MED_Classifier(cluster1,cluster2,cluster3,mean1,mean2,mean3,num_clusters)
+function decision_map = MED_Classifier(cluster1,cluster2,cluster3,mean1,mean2,mean3,num_clusters)
 
     class_means = zeros(num_clusters, 2);
     
