@@ -33,6 +33,8 @@ function MED_Classifier(cluster1,cluster2,cluster3,mean1,mean2,mean3,num_cluster
     cluster_size = size(x);
     xy = [x(:) y(:)];
     
+    xy
+    
     dist_mat = pdist2(xy, class_means);
     [~, pred_label] = min(dist_mat, [], 2);
     
