@@ -52,6 +52,10 @@ decision_micd = reshape(labels, cluster_size);
 
 % classify MED
 decision_med = MED_Classifier(cluster_A, cluster_B, 0, mu_A, mu_B, 0, 2);
+hold on
+plot_ellipse(mu_A(1), mu_A(2), theta_A, cont_Axes_A(2,2), cont_Axes_A(1,1))
+plot_ellipse(mu_B(1), mu_B(2), theta_B, cont_Axes_B(2,2), cont_Axes_B(1,1))
+title('MED Decision Boundary Case 1')
 
 % plot boundaries
 figure;
@@ -136,6 +140,11 @@ decision_micd = reshape(labels, cluster_size);
 
 % classify MED
 decision_med = MED_Classifier(cluster_C, cluster_D, cluster_E, mu_C, mu_D, mu_E, 3);
+hold on
+plot_ellipse(mu_C(1), mu_C(2), theta_C, cont_Axes_C(2,2), cont_Axes_C(1,1))
+plot_ellipse(mu_D(1), mu_D(2), theta_D, cont_Axes_D(2,2), cont_Axes_D(1,1))
+plot_ellipse(mu_E(1), mu_E(2), theta_E, cont_Axes_E(2,2), cont_Axes_E(1,1))
+title('MED Decision Boundary Case 2')
 
 % plot results
 figure

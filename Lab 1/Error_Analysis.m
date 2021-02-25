@@ -94,6 +94,12 @@ function Error_Analysis(cluster1, cluster2, cluster3, mean1, mean2, mean3, num_c
     
     figure
     confusionchart(C)
+    if num_clusters == 2
+        title('Confusion Matrix MED Case 1')
+    elseif num_clusters == 3
+      title('Confusion Matrix MED Case 2')
+    end
+    
     
     
     

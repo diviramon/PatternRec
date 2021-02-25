@@ -53,7 +53,7 @@ function decision_map = MED_Classifier(cluster1,cluster2,cluster3,mean1,mean2,me
     scatter(cluster2(:,1), cluster2(:,2),7,'g','filled')
     
     if num_clusters == 3
-        scatter(cluster3(:,1), cluster3(:,2),7,'b','filled')
+        scatter(cluster3(:,1), cluster3(:,2),7,'b')
     end
     
     hold off

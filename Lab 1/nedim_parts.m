@@ -31,6 +31,11 @@ plot_ellipse(mu_B(1), mu_B(2), theta_B, cont_Axes_B(2,2), cont_Axes_B(1,1))
 hold off
 
 MED_Classifier(cluster_A, cluster_B, 0, mu_A, mu_B, 0, 2);
+hold on
+plot_ellipse(mu_A(1), mu_A(2), theta_A, cont_Axes_A(2,2), cont_Axes_A(1,1))
+plot_ellipse(mu_B(1), mu_B(2), theta_B, cont_Axes_B(2,2), cont_Axes_B(1,1))
+
+
 Error_Analysis(cluster_A, cluster_B, 0, mu_A, mu_B, 0, 2);
 
 % CASE 2:
