@@ -14,7 +14,7 @@ classdef LabClass
             obj.Mu = arg2;
             obj.Sigma = arg3;
             
-            % Generating Clusters
+            % Generating Clusters and Contours
             obj.R = chol(obj.Sigma);
             obj.Cluster = repmat(obj.Mu,obj.N,1) + randn(obj.N,2)*obj.R;
             unit_circle = [cos((1:1000)/1000*2*pi); sin((1:1000)/1000*2*pi)]';
