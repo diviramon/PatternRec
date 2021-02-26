@@ -25,7 +25,7 @@ plot(A.Contour(:,1), A.Contour(:,2), 'r');
 plot(B.Cluster(:,1), B.Cluster(:,2), 'b.');
 plot(B.Contour(:,1), B.Contour(:,2), 'b');
 axis equal
-title('CASE1: A/B Cluster Plot')
+title('A-')
 hold off
 
 figure(2)
@@ -37,7 +37,6 @@ plot(D.Contour(:,1), D.Contour(:,2), 'b');
 plot(E.Cluster(:,1), E.Cluster(:,2), 'g.');
 plot(E.Contour(:,1), E.Contour(:,2), 'g');
 axis equal
-title('CASE2: C/D/E Cluster Plot')
 hold off
 
 % 3. Classifiers
@@ -50,7 +49,6 @@ plot(A.Contour(:,1), A.Contour(:,2), 'r');
 plot(B.Cluster(:,1), B.Cluster(:,2), 'b.')
 plot(B.Contour(:,1), B.Contour(:,2), 'b');
 axis equal
-title('CASE1: A/B NN(Blk)/5NN(Mag) Boundary Plot')
 
 % NN
 [AB_x, AB_y, AB_NN] = create2DGrid(STEP, A.Cluster, B.Cluster);
@@ -80,7 +78,6 @@ plot(D.Contour(:,1), D.Contour(:,2), 'b');
 plot(E.Cluster(:,1), E.Cluster(:,2), 'g.');
 plot(E.Contour(:,1), E.Contour(:,2), 'g');
 axis equal
-title('CASE2: C/D/E NN(Black)/5NN(Magenta) Boundary Plot')
 
 % NN
 [CDE_x, CDE_y, CDE_NN] = create2DGrid(STEP, C.Cluster, D.Cluster, E.Cluster);

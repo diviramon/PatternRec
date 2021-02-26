@@ -1,5 +1,8 @@
 clear
 close all
+
+UNIT_CIRCLE = [cos((1:1000)/1000*2*pi); sin((1:1000)/1000*2*pi)]';
+
 %%%%%%%%%%%%%
 % CASE 1:   %
 %%%%%%%%%%%%%
@@ -16,8 +19,15 @@ sig_B = [8 0; 0 4];
 
 cluster_A = create_cluster(N_a, mu_A', sig_A);
 cluster_B = create_cluster(N_b, mu_B', sig_B);
-[theta_A, cont_Axes_A] = eigen_info(sig_A);
-[theta_B, cont_Axes_B] = eigen_info(sig_B); 
+
+R_A = chol(sig_A);
+A_ctr = repmat(mu_A',length(UNIT_CIRCLE),1) + UNIT_CIRCLE*R_A;
+
+R_B = chol(sig_B);
+B_ctr = repmat(mu_B',length(UNIT_CIRCLE),1) + UNIT_CIRCLE*R_B;
+
+% [theta_A, cont_Axes_A] = eigen_info(sig_A);
+% [theta_B, cont_Axes_B] = eigen_info(sig_B); 
 
 % clusters range
 min_x = floor(min([min(cluster_A(:,1)) min(cluster_B(:,1))]));
@@ -52,9 +62,11 @@ cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1;];
 colormap(cmap);
 contour(x,y,decision_map,'k');
 scatter(cluster_A(:,1), cluster_A(:,2),7,'r','filled')
-scatter(cluster_B(:,1), cluster_B(:,2),7,'b','filled')
-plot_ellipse(mu_A(1), mu_A(2), theta_A, cont_Axes_A(2,2), cont_Axes_A(1,1))
-plot_ellipse(mu_B(1), mu_B(2), theta_B, cont_Axes_B(2,2), cont_Axes_B(1,1))
+scatter(cluster_B(:,1), cluster_B(:,2),7,'g','filled')
+plot(A_ctr(:,1), A_ctr(:,2),'r');
+plot(B_ctr(:,1), B_ctr(:,2),'g');
+% plot_ellipse(mu_A(1), mu_A(2), theta_A, cont_Axes_A(2,2), cont_Axes_A(1,1))
+% plot_ellipse(mu_B(1), mu_B(2), theta_B, cont_Axes_B(2,2), cont_Axes_B(1,1))
 xlabel('x_1');
 ylabel('x_2');
 title("MAP Decision Boundary Case 1");
@@ -102,9 +114,19 @@ sig_E = [10 -5; -5 20];
 cluster_C = create_cluster(N_c, mu_C', sig_C);
 cluster_D = create_cluster(N_d, mu_D', sig_D);
 cluster_E = create_cluster(N_e, mu_E', sig_E);
-[theta_C, cont_Axes_C] = eigen_info(sig_C);
-[theta_D, cont_Axes_D] = eigen_info(sig_D); 
-[theta_E, cont_Axes_E] = eigen_info(sig_E); 
+
+R_C = chol(sig_C);
+C_ctr = repmat(mu_C',length(UNIT_CIRCLE),1) + UNIT_CIRCLE*R_C;
+
+R_D = chol(sig_D);
+D_ctr = repmat(mu_D',length(UNIT_CIRCLE),1) + UNIT_CIRCLE*R_D;
+
+R_E = chol(sig_E);
+E_ctr = repmat(mu_E',length(UNIT_CIRCLE),1) + UNIT_CIRCLE*R_E;
+
+% [theta_C, cont_Axes_C] = eigen_info(sig_C);
+% [theta_D, cont_Axes_D] = eigen_info(sig_D); 
+% [theta_E, cont_Axes_E] = eigen_info(sig_E); 
 
 % clusters range
 min_x = floor(min([min(cluster_C(:,1)) min(cluster_D(:,1)) min(cluster_E(:,1))]));
@@ -142,11 +164,16 @@ cmap = [1 0.8 0.8; 0.95 1 0.95; 0.9 0.9 1;];
 colormap(cmap);
 contour(x,y,decision_map,'k');
 scatter(cluster_C(:,1), cluster_C(:,2),7,'r','filled')
-scatter(cluster_D(:,1), cluster_D(:,2),7,'b','filled')
-scatter(cluster_E(:,1), cluster_E(:,2),7,'g','filled')
-plot_ellipse(mu_C(1), mu_C(2), theta_C, cont_Axes_C(2,2), cont_Axes_C(1,1))
-plot_ellipse(mu_D(1), mu_D(2), theta_D, cont_Axes_D(2,2), cont_Axes_D(1,1))
-plot_ellipse(mu_E(1), mu_E(2), theta_E, cont_Axes_E(2,2), cont_Axes_E(1,1))
+scatter(cluster_D(:,1), cluster_D(:,2),7,'g','filled')
+scatter(cluster_E(:,1), cluster_E(:,2),7,'b','filled')
+
+plot(C_ctr(:,1), C_ctr(:,2),'r');
+plot(D_ctr(:,1), D_ctr(:,2),'g');
+plot(E_ctr(:,1), E_ctr(:,2),'b');
+
+% plot_ellipse(mu_C(1), mu_C(2), theta_C, cont_Axes_C(2,2), cont_Axes_C(1,1))
+% plot_ellipse(mu_D(1), mu_D(2), theta_D, cont_Axes_D(2,2), cont_Axes_D(1,1))
+% plot_ellipse(mu_E(1), mu_E(2), theta_E, cont_Axes_E(2,2), cont_Axes_E(1,1))
 xlabel('x_1');
 ylabel('x_2');
 title("MAP Decision Boundary Case 2");
