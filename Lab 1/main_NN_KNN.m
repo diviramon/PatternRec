@@ -25,7 +25,7 @@ plot(A.Contour(:,1), A.Contour(:,2), 'r');
 plot(B.Cluster(:,1), B.Cluster(:,2), 'b.');
 plot(B.Contour(:,1), B.Contour(:,2), 'b');
 axis equal
-title('CASE1: A/B Cluster Plot')
+title('CASE1: A(Red)/B(Blue) Cluster Plot')
 hold off
 
 figure(2)
@@ -37,7 +37,7 @@ plot(D.Contour(:,1), D.Contour(:,2), 'b');
 plot(E.Cluster(:,1), E.Cluster(:,2), 'g.');
 plot(E.Contour(:,1), E.Contour(:,2), 'g');
 axis equal
-title('CASE2: C/D/E Cluster Plot')
+title('CASE2: C(Red)/D(Blue)/E(Green) Cluster Plot')
 hold off
 
 % 3. Classifiers
