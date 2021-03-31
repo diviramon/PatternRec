@@ -26,7 +26,7 @@ B_px = exppdf(x,1);
 
 % A Estimate
 mu_A_est_G = (1/N_A)*sum(a);
-sig_A_est_G = (1/N_A)*sum((a-mu_A_est_G).^2);
+sig_A_est_G = sqrt((1/N_A)*sum((a-mu_A_est_G).^2));
 A_px_est_G = normpdf(x,mu_A_est_G,sig_A_est_G);
 figure(1);
 hold on
@@ -40,7 +40,7 @@ hold off
 
 % B Estimate
 mu_B_est_G = (1/N_B)*sum(b);
-sig_B_est_G = (1/N_B)*sum((a-mu_B_est_G).^2);
+sig_B_est_G = sqrt((1/N_B)*sum((b-mu_B_est_G).^2));
 B_px_est_G = normpdf(x,mu_B_est_G,sig_B_est_G);
 figure(2);
 hold on
@@ -56,6 +56,7 @@ hold off
 
 % A Estimate
 mu_A_est_E = (1/N_A)*sum(a);
+gamma_A_est_E = (1/mu_A_est_E);
 A_px_est_E = exppdf(x,mu_A_est_E);
 figure(3);
 hold on
@@ -69,6 +70,7 @@ hold off
 
 % B Estimate
 mu_B_est_E = (1/N_B)*sum(b);
+gamma_B_est_E = (1/mu_B_est_E);
 B_px_est_E = exppdf(x,mu_B_est_E);
 figure(4);
 hold on
@@ -84,7 +86,7 @@ hold off
 
 % A Estimate
 a_A_est_U = min(a);
-b_A_est_U = max(b);
+b_A_est_U = max(a);
 A_px_est_U = unifpdf(x,a_A_est_U,b_A_est_U);
 figure(5);
 hold on
